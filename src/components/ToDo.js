@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ToDo({ todo, toggleTask, removeTask }) {
+function ToDo({ todo, toggleTask, removeTask, editTask }) {
 
     return (
         <div key={todo.id} className="item-todo">
@@ -10,8 +10,11 @@ function ToDo({ todo, toggleTask, removeTask }) {
             >
                 {todo.task}
             </div>
-            <div className="item-delete" onClick={() => removeTask(todo.id)}>
+            <div className="item-icon" onClick={() => removeTask(todo.id)}>
                 X
+            </div>
+            <div className="item-icon" onClick={() => editTask(todo.id, todo.task)}>
+                ✂
             </div>
         </div>
     );
