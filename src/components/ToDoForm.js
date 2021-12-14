@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-function ToDoForm({ addTask }) {
-    const [userInput, setUserInput] = useState("");
+function ToDoForm({ addTask, value = "", buttonText = "Add" }) {
+    const [userInput, setUserInput] = useState(value);
 
     const handleChange = (e) => {
         setUserInput(e.currentTarget.value);
@@ -18,7 +18,9 @@ function ToDoForm({ addTask }) {
             handleSubmit(e)
         }
     }
-
+    useEffect(() => {
+        setUserInput(value);
+    }, [value])
 
     return (
         <form onSubmit={handleSubmit}>
@@ -30,7 +32,7 @@ function ToDoForm({ addTask }) {
                 onKeyDown={handleKeyPress}
                 placeholder="Title" 
             />
-            <button>Add</button>
+            <button>{buttonText}</button>
         </form>
     );
 }
